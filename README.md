@@ -1,2 +1,2 @@
 # SocialMind
-A .NET social media moderation app based on AI
+A .NET app for the moderation of social media accounts with the help of AI
