@@ -1,36 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 
-namespace SocialMind.Core.LLMApiServices
+
+namespace SocialMind.Core.LLMApiServices;
+
+public class MistralApiService : LLMApiService
 {
-    public class MistralApiService : LLMApiService
+    public MistralApiService(HttpClient httpClient, string apiEndpoint, string apiKey)
+        : base(httpClient, apiEndpoint, apiKey) { }
+
+    protected override object CreatePayload(string? message)
     {
-        public MistralApiService(HttpClient httpClient, string apiEndpoint, string apiKey)
-            : base(httpClient, apiEndpoint, apiKey) { }
+        return new
+               {
+                   model = "mistral-large-latest",
+                   messages = new[]
+                              {
+                                  new { role = "user", content = message }
+                              }
+               };
+    }
 
-        protected override object CreatePayload(string? message)
-        {
-            return new
-                   {
-                       model = "mistral-large-latest",
-                       messages = new[]
-                                  {
-                                      new { role = "user", content = message }
-                                  }
-                   };
-        }
-
-        public override string? ResponseParser(string response)
-        {
-            using JsonDocument jsonDoc = JsonDocument.Parse(response);
-            return jsonDoc.RootElement.GetProperty("choices")[0]
-                          .GetProperty("message")
-                          .GetProperty("content")
-                          .GetString();
-        }
+    public override string? ResponseParser(string response)
+    {
+        using JsonDocument jsonDoc = JsonDocument.Parse(response);
+        return jsonDoc.RootElement.GetProperty("choices")[0]
+                      .GetProperty("message")
+                      .GetProperty("content")
+                      .GetString();
     }
 }
