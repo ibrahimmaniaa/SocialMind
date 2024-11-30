@@ -1,16 +1,17 @@
-﻿using System.Text.Json;
-using SocialMind.Core.LLMApiServices;
+﻿using SocialMind.Core.LLMApiServices;
 
 
-class Program
+namespace SocialMind.TestCmd;
+
+internal class Program
 {
-    static async Task Main(string[] args)
+    public static async Task Main(string[] args)
     {
         // Provide the API endpoint and API key
         const string API_ENDPOINT = "";
         const string API_KEY = "";
 
-        HttpClient httpClient = new HttpClient();
+        HttpClient httpClient = new();
 
         ILanguageModelService chatService = new MistralApiService(httpClient, API_ENDPOINT, API_KEY);
 
