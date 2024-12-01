@@ -1,4 +1,6 @@
-﻿using SocialMind.Core.LLMApiServices;
+﻿using SocialMind.Core.Domain;
+using SocialMind.Core.Domain.DataTransferObjects.Gemini;
+using SocialMind.Core.LLMApiServices;
 
 
 namespace SocialMind.TestCmd;
@@ -7,29 +9,22 @@ internal class Program
 {
     public static async Task Main(string[] args)
     {
-        // Provide the API endpoint and API key
-        const string API_ENDPOINT = "";
-        const string API_KEY = "";
+        const string API_KEY = "AIzaSyAZ-oHoZ6roBFaPC08VLlP95ZCYqOypdtA";
 
         HttpClient httpClient = new();
 
-        ILanguageModelService chatService = new MistralApiService(httpClient, API_ENDPOINT, API_KEY);
+        //ILanguageModelService chatService = new MistralApiService(httpClient, API_ENDPOINT, API_KEY);
+        ILanguageModelService chatService = new GeminiApiService(httpClient, GeminiConfig.RequestUri, API_KEY);
 
         try
         {
-            Console.WriteLine("Enter a message: ");
-            string? message = Console.ReadLine();
-            string response = await chatService.GetResponseAsync(message);
-            string? responseText = chatService.ResponseParser(response);
+            ResponseDto? response = await chatService.GetResponseAsync<ResponseDto>("How many hours per day?");
 
-            Console.WriteLine("Response: " + responseText);
-
+            string responseText = response!.Cadndidates.First().Content.Parts.First().Text;
         }
         catch (Exception ex)
         {
             Console.WriteLine("Error: " + ex.Message);
         }
-
-        Console.ReadKey();
     }
 }

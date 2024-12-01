@@ -1,5 +1,9 @@
-﻿using System.Text;
+﻿using System.Net.Http.Json;
+using System.Text;
 using System.Text.Json;
+
+using SocialMind.Core.Domain.DataTransferObjects.Gemini;
+
 
 namespace SocialMind.Core.LLMApiServices
 {
@@ -22,7 +26,7 @@ namespace SocialMind.Core.LLMApiServices
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        protected abstract object CreatePayload(string? message);
+        protected abstract object CreatePayload(string message);
 
         /// <summary>
         /// Parsing the response from the API to get only the output text.
@@ -43,7 +47,6 @@ namespace SocialMind.Core.LLMApiServices
         protected virtual void SetHeaders()
         {
             httpClient.DefaultRequestHeaders.Clear();
-            httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
             httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
         }
 
@@ -54,7 +57,7 @@ namespace SocialMind.Core.LLMApiServices
         /// <param name="message"></param>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException"></exception>
-        public async Task<string> GetResponseAsync(string? message)
+        public async Task<T?> GetResponseAsync<T>(string? message)
         {
             string url = ConstructUrl();
 
@@ -64,7 +67,6 @@ namespace SocialMind.Core.LLMApiServices
                                                 Encoding.UTF8,
                                                 "application/json");
 
-            // Set headers
             SetHeaders();
 
             try
@@ -73,7 +75,7 @@ namespace SocialMind.Core.LLMApiServices
 
                 response.EnsureSuccessStatusCode();
 
-                return await response.Content.ReadAsStringAsync();
+                return await response.Content.ReadFromJsonAsync<T>();
             }
             catch (Exception ex)
             {

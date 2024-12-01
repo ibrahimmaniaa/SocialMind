@@ -2,7 +2,7 @@
 {
     public interface ILanguageModelService
     {
-        Task<string> GetResponseAsync(string? message);
+        Task<T?> GetResponseAsync<T>(string? prompt);
 
         string? ResponseParser(string response);
     }

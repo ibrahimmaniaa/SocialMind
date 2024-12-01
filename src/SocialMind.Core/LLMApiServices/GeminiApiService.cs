@@ -1,5 +1,7 @@
 ﻿using System.Text.Json;
 
+using SocialMind.Core.Domain.DataTransferObjects.Gemini;
+
 
 namespace SocialMind.Core.LLMApiServices;
 
@@ -13,7 +15,7 @@ public class GeminiApiService : LLMApiService
                             string apiKey)
         : base(httpClient, apiEndpoint, apiKey)
     {
-        apiUrl = $"{apiEndpoint}{apiKey}";
+        apiUrl = $"{apiEndpoint}?key={apiKey}";
     }
 
 
@@ -27,17 +29,20 @@ public class GeminiApiService : LLMApiService
     }
 
 
-    protected override object CreatePayload(string? message)
+    protected override object CreatePayload(string message)
     {
-        return new
+        return new RequestDto()
                {
-                   contents = new[]
-                              {
-                                  new
+                   Contents =
+                   [
+                       new ContentDto()
                                   {
-                                      text = message
+                                      Parts =
+                                      [
+                                          new PartDto() { Text = message }
+                                      ]
                                   }
-                              }
+                   ]
                };
     }
 
