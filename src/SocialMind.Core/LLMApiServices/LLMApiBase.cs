@@ -26,7 +26,7 @@ namespace SocialMind.Core.LLMApiServices
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        protected abstract object? CreatePayload(string message);
+        protected abstract object? CreatePayload(string? message);
 
         /// <summary>
         /// The url to be constructed for the http request.
