@@ -5,10 +5,9 @@ using SocialMind.Core.Domain.DataTransferObjects.Gemini;
 
 namespace SocialMind.Core.LLMApiServices;
 
-public class GeminiApiService : LLMApiService
+public class GeminiApiService : LLMApiBase
 {
     private readonly string apiUrl;
-
 
     public GeminiApiService(HttpClient httpClient,
                             string apiEndpoint,
@@ -18,9 +17,7 @@ public class GeminiApiService : LLMApiService
         apiUrl = $"{apiEndpoint}?key={apiKey}";
     }
 
-
     protected override string ConstructUrl() => apiUrl;
-
 
     protected override void SetHeaders()
     {
@@ -28,32 +25,20 @@ public class GeminiApiService : LLMApiService
         httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
     }
 
-
     protected override object CreatePayload(string message)
     {
-        return new RequestDto()
+        return new RequestDto
                {
                    Contents =
                    [
-                       new ContentDto()
+                       new ContentDto
                                   {
                                       Parts =
                                       [
-                                          new PartDto() { Text = message }
+                                          new PartDto { Text = message }
                                       ]
                                   }
                    ]
                };
-    }
-
-
-    public override string? ResponseParser(string response)
-    {
-        using JsonDocument jsonDoc = JsonDocument.Parse(response);
-        return jsonDoc.RootElement.GetProperty("candidates")[0]
-                      .GetProperty("content")
-                      .GetProperty("parts")[0]
-                      .GetProperty("text")
-                      .GetString();
     }
 }
