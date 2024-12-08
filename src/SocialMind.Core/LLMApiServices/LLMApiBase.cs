@@ -7,13 +7,13 @@ using SocialMind.Core.Domain.DataTransferObjects.Gemini;
 
 namespace SocialMind.Core.LLMApiServices
 {
-    public abstract class LLMApiService : ILanguageModelService
+    public abstract class LLMApiBase : ILanguageModelService
     {
         protected HttpClient httpClient;
         private readonly string apiEndpoint;
         private readonly string apiKey;
 
-        protected LLMApiService(HttpClient httpClient, string apiEndpoint, string apiKey)
+        protected LLMApiBase(HttpClient httpClient, string apiEndpoint, string apiKey)
         {
             this.httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
             this.apiEndpoint = apiEndpoint ?? throw new ArgumentNullException(nameof(apiEndpoint));
@@ -27,13 +27,6 @@ namespace SocialMind.Core.LLMApiServices
         /// <param name="message"></param>
         /// <returns></returns>
         protected abstract object CreatePayload(string message);
-
-        /// <summary>
-        /// Parsing the response from the API to get only the output text.
-        /// </summary>
-        /// <param name="response"></param>
-        /// <returns></returns>
-        public abstract string? ResponseParser(string response);
 
         /// <summary>
         /// The url to be constructed for the http request.
