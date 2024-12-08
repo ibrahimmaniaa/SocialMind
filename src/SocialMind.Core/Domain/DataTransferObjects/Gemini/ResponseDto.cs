@@ -12,17 +12,17 @@ public class ResponseDto
     /// Gemini candidates
     /// </summary>
     [JsonPropertyName("candidates")]
-    public CandidateDto[] Cadndidates { get; set; }
+    public required CandidateDto[] Cadndidates { get; set; }
 
     /// <summary>
     /// Gemini usageMetadata
     /// </summary>
     [JsonPropertyName("usageMetadata")]
-    public UsageMetadataDto UsageMetadata { get; set; }
+    public required UsageMetadataDto UsageMetadata { get; set; }
 
     /// <summary>
     /// Gemini modelVersion
     /// </summary>
     [JsonPropertyName("modelVersion")]
-    public string ModelVersion { get; set; }
+    public required string ModelVersion { get; set; }
 }

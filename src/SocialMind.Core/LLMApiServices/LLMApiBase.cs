@@ -26,7 +26,7 @@ namespace SocialMind.Core.LLMApiServices
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        protected abstract object CreatePayload(string message);
+        protected abstract object? CreatePayload(string message);
 
         /// <summary>
         /// The url to be constructed for the http request.
@@ -54,7 +54,7 @@ namespace SocialMind.Core.LLMApiServices
         {
             string url = ConstructUrl();
 
-            object payload = CreatePayload(message);
+            object? payload = CreatePayload(message);
 
             StringContent jsonContent = new(JsonSerializer.Serialize(payload),
                                                 Encoding.UTF8,

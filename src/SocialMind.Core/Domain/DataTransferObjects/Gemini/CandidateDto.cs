@@ -11,17 +11,17 @@ public class CandidateDto
     /// Gemini content
     /// </summary>
     [JsonPropertyName("content")]
-    public ContentDto Content { get; set; }
+    public required ContentDto Content { get; set; }
 
     /// <summary>
     /// Gemini finishReason
     /// </summary>
     [JsonPropertyName("finishReason")]
-    public string FinishReason { get; set; }
+    public required string FinishReason { get; set; }
 
     /// <summary>
     /// Gemini avgLogprobs
     /// </summary>
     [JsonPropertyName("avgLogprobs")]
-    public double AvgLogProbs { get; set; }
+    public required double AvgLogProbs { get; set; }
 }

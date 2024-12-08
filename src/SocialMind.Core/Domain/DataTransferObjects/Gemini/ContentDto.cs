@@ -12,11 +12,11 @@ public class ContentDto
     /// Gemini parts
     /// </summary>
     [JsonPropertyName("parts")]
-    public PartDto[] Parts { get; set; }
+    public required PartDto[] Parts { get; set; }
 
     /// <summary>
     /// Gemini role
     /// </summary>
     [JsonPropertyName("role")]
-    public string Role { get; set; }
+    public string? Role { get; set; }
 }

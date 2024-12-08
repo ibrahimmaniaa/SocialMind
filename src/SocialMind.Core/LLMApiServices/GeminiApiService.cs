@@ -25,7 +25,7 @@ public class GeminiApiService : LLMApiBase
         httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
     }
 
-    protected override object CreatePayload(string message)
+    protected override object? CreatePayload(string message)
     {
         return new RequestDto
                {

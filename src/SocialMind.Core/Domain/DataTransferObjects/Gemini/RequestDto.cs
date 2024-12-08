@@ -12,5 +12,5 @@ public class RequestDto
     /// Gemini contents
     /// </summary>
     [JsonPropertyName("contents")]
-    public ContentDto[] Contents { get; set; }
+    public required ContentDto[] Contents { get; set; }
 }

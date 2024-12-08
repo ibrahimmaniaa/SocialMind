@@ -12,5 +12,5 @@ public class PartDto
     /// Gemini text
     /// </summary>
     [JsonPropertyName("text")]
-    public string Text { get; set; }
+    public required string Text { get; set; }
 }
