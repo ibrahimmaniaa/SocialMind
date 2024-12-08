@@ -1,4 +1,4 @@
-﻿namespace SocialMind.Core.Domain;
+﻿namespace SocialMind.Core.Domain.Configs;
 
 /// <summary>
 /// Gemini configuration

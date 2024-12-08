@@ -1,4 +1,4 @@
-﻿using SocialMind.Core.Domain;
+﻿using SocialMind.Core.Domain.Configs;
 using SocialMind.Core.Domain.DataTransferObjects.Gemini;
 using SocialMind.Core.LLMApiServices;
 
@@ -9,11 +9,10 @@ internal class Program
 {
     public static async Task Main(string[] args)
     {
-        const string API_KEY = "";
+        const string API_KEY = "AIzaSyCHnM2O-1kIY4AeGAIZzdeN7IMzEUeq09M";
 
         HttpClient httpClient = new();
 
-        //ILanguageModelService chatService = new MistralApiService(httpClient, API_ENDPOINT, API_KEY);
         ILanguageModelService chatService = new GeminiApiService(httpClient, GeminiConfig.RequestUri, API_KEY);
 
         try
