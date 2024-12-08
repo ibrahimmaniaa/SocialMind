@@ -19,7 +19,7 @@ internal class Program
         {
             ResponseDto? response = await chatService.GetResponseAsync<ResponseDto>("How many hours per day?");
 
-            string responseText = response!.Cadndidates.First().Content.Parts.First().Text;
+            string? responseText = response!.Cadndidates.First().Content.Parts.First().Text;
         }
         catch (Exception ex)
         {
