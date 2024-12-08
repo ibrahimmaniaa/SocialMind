@@ -9,7 +9,7 @@ internal class Program
 {
     public static async Task Main(string[] args)
     {
-        const string API_KEY = "AIzaSyCHnM2O-1kIY4AeGAIZzdeN7IMzEUeq09M";
+        const string API_KEY = "";
 
         HttpClient httpClient = new();
 
