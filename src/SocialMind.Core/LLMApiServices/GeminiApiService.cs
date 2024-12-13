@@ -5,7 +5,7 @@ using SocialMind.Core.Domain.DataTransferObjects.Gemini;
 
 namespace SocialMind.Core.LLMApiServices;
 
-public class GeminiApiService : LLMApiBase
+public class GeminiApiService : LanguageModelClientBase
 {
     private readonly string apiUrl;
 
@@ -21,8 +21,8 @@ public class GeminiApiService : LLMApiBase
 
     protected override void SetHeaders()
     {
-        httpClient.DefaultRequestHeaders.Clear();
-        httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+        HttpClient.DefaultRequestHeaders.Clear();
+        HttpClient.DefaultRequestHeaders.Add("Accept", "application/json");
     }
 
     protected override object? CreatePayload(string? message)
