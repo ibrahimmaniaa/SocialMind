@@ -1,4 +1,4 @@
-﻿namespace SocialMind.Core.LLMApiServices;
+﻿namespace SocialMind.Core.Services;
 
 /// <summary>
 /// Language model client interface

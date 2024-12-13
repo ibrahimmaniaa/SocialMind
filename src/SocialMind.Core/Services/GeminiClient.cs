@@ -1,15 +1,13 @@
-﻿using System.Text.Json;
-
-using SocialMind.Core.Domain.DataTransferObjects.Gemini;
+﻿using SocialMind.Core.Domain.DataTransferObjects.Gemini;
 
 
-namespace SocialMind.Core.LLMApiServices;
+namespace SocialMind.Core.Services;
 
-public class GeminiApiService : LanguageModelClientBase
+public class GeminiClient : LanguageModelClientBase
 {
     private readonly string apiUrl;
 
-    public GeminiApiService(HttpClient httpClient,
+    public GeminiClient(HttpClient httpClient,
                             string apiEndpoint,
                             string apiKey)
         : base(httpClient, apiEndpoint, apiKey)

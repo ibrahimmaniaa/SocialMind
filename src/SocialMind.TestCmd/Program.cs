@@ -1,7 +1,7 @@
 ﻿using SocialMind.Core.Domain;
 using SocialMind.Core.Domain.Configs;
 using SocialMind.Core.Domain.DataTransferObjects.Gemini;
-using SocialMind.Core.LLMApiServices;
+using SocialMind.Core.Services;
 
 
 namespace SocialMind.TestCmd;
@@ -15,11 +15,11 @@ internal class Program
         HttpClient httpClient = new();
 
         //ILanguageModelClient chatService = new MistralApiService(httpClient, API_ENDPOINT, API_KEY);
-        ILanguageModelClient geminiChatService = new GeminiApiService(httpClient, GeminiConfig.RequestUri, API_KEY);
+        ILanguageModelClient geminiChatService = new GeminiClient(httpClient, GeminiConfig.RequestUri, API_KEY);
 
         try
         {
-            PartDto? response = await geminiChatService.GetResponseAsync<PartDto>("How many hours per day?");
+            ResponseDto? response = await geminiChatService.GetResponseAsync<ResponseDto>("How many hours per day?");
 
             //string responseText = response!.Cadndidates.First().Content.Parts.First().Text;
         }

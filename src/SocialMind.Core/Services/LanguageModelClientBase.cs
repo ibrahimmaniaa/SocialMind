@@ -2,10 +2,8 @@
 using System.Text;
 using System.Text.Json;
 
-using SocialMind.Core.Domain.DataTransferObjects.Gemini;
 
-
-namespace SocialMind.Core.LLMApiServices;
+namespace SocialMind.Core.Services;
 
 public abstract class LanguageModelClientBase : ILanguageModelClient
 {
