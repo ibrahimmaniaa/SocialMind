@@ -13,14 +13,14 @@ internal class Program
 
         HttpClient httpClient = new();
 
-        //ILanguageModelService chatService = new MistralApiService(httpClient, API_ENDPOINT, API_KEY);
-        ILanguageModelService chatService = new GeminiApiService(httpClient, GeminiConfig.RequestUri, API_KEY);
+        //ILanguageModelClient chatService = new MistralApiService(httpClient, API_ENDPOINT, API_KEY);
+        ILanguageModelClient geminiChatService = new GeminiApiService(httpClient, GeminiConfig.RequestUri, API_KEY);
 
         try
         {
-            ResponseDto? response = await chatService.GetResponseAsync<ResponseDto>("How many hours per day?");
+            PartDto? response = await geminiChatService.GetResponseAsync<PartDto>("How many hours per day?");
 
-            string responseText = response!.Cadndidates.First().Content.Parts.First().Text;
+            //string responseText = response!.Cadndidates.First().Content.Parts.First().Text;
         }
         catch (Exception ex)
         {

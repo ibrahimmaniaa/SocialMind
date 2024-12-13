@@ -5,7 +5,7 @@ using SocialMind.Core.Domain.DataTransferObjects.Gemini;
 
 namespace SocialMind.Core.LLMApiServices;
 
-public class GeminiApiService : LLMApiService
+public class GeminiApiService : LanguageModelClientBase
 {
     private readonly string apiUrl;
 
@@ -24,8 +24,8 @@ public class GeminiApiService : LLMApiService
 
     protected override void SetHeaders()
     {
-        httpClient.DefaultRequestHeaders.Clear();
-        httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+        HttpClient.DefaultRequestHeaders.Clear();
+        HttpClient.DefaultRequestHeaders.Add("Accept", "application/json");
     }
 
 
@@ -44,16 +44,5 @@ public class GeminiApiService : LLMApiService
                                   }
                    ]
                };
-    }
-
-
-    public override string? ResponseParser(string response)
-    {
-        using JsonDocument jsonDoc = JsonDocument.Parse(response);
-        return jsonDoc.RootElement.GetProperty("candidates")[0]
-                      .GetProperty("content")
-                      .GetProperty("parts")[0]
-                      .GetProperty("text")
-                      .GetString();
     }
 }

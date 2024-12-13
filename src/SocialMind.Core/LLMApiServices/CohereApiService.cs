@@ -3,7 +3,7 @@
 
 namespace SocialMind.Core.LLMApiServices;
 
-public class CohereApiService : LLMApiService
+public class CohereApiService : LanguageModelClientBase
 {
     public CohereApiService(HttpClient httpClient, string apiEndpoint, string apiKey)
         : base(httpClient, apiEndpoint, apiKey) { }
@@ -22,14 +22,5 @@ public class CohereApiService : LLMApiService
                                   }
                               }
                };
-    }
-
-    public override string? ResponseParser(string response)
-    {
-        using JsonDocument jsonDoc = JsonDocument.Parse(response);
-        return jsonDoc.RootElement.GetProperty("message")
-                      .GetProperty("content")[0]
-                      .GetProperty("text")
-                      .GetString();
     }
 }

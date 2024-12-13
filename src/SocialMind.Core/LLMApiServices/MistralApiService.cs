@@ -3,7 +3,7 @@
 
 namespace SocialMind.Core.LLMApiServices;
 
-public class MistralApiService : LLMApiService
+public class MistralApiService : LanguageModelClientBase
 {
     public MistralApiService(HttpClient httpClient, string apiEndpoint, string apiKey)
         : base(httpClient, apiEndpoint, apiKey) { }
@@ -18,14 +18,5 @@ public class MistralApiService : LLMApiService
                                   new { role = "user", content = message }
                               }
                };
-    }
-
-    public override string? ResponseParser(string response)
-    {
-        using JsonDocument jsonDoc = JsonDocument.Parse(response);
-        return jsonDoc.RootElement.GetProperty("choices")[0]
-                      .GetProperty("message")
-                      .GetProperty("content")
-                      .GetString();
     }
 }
