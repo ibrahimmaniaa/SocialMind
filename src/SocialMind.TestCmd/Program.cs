@@ -10,18 +10,15 @@ internal class Program
 {
     public static async Task Main(string[] args)
     {
-        const string API_KEY = "";
-
         HttpClient httpClient = new();
 
-        //ILanguageModelClient chatService = new MistralApiService(httpClient, API_ENDPOINT, API_KEY);
-        ILanguageModelClient geminiChatService = new GeminiClient(httpClient, GeminiConfig.RequestUri, API_KEY);
+        ILanguageModelClient geminiClient = new GeminiClient(httpClient, GeminiConfig.RequestUri, GeminiConfig.ApiKey);
 
         try
         {
-            ResponseDto? response = await geminiChatService.GetResponseAsync<ResponseDto>("How many hours per day?");
+            ResponseDto? response = await geminiClient.GetResponseAsync<ResponseDto>("How many hours per day?");
 
-            //string responseText = response!.Cadndidates.First().Content.Parts.First().Text;
+            string responseText = response!.Cadndidates.First().Content.Parts.First().Text!;
         }
         catch (Exception ex)
         {
