@@ -13,7 +13,7 @@ public class GeminiConfig
     /// <summary>
     /// Authorization API key
     /// </summary>
-    public static string ApiKey => "AIzaSyAGezEF-d54pBeGLyl_6fKzxh9EUsHDVkw";
+    public static string ApiKey => "";
 
     private static string BaseUrl => "https://generativelanguage.googleapis.com/v1beta/models/";
 
