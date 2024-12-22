@@ -6,13 +6,13 @@ namespace SocialMind.Core.Domain.DataTransferObjects.Gemini;
 /// <summary>
 /// Gemini response DTO
 /// </summary>
-public class ResponseDto
+public class ResponseDto : ResponseDtoBase
 {
     /// <summary>
     /// Gemini candidates
     /// </summary>
     [JsonPropertyName("candidates")]
-    public required CandidateDto[] Cadndidates { get; set; }
+    public required CandidateDto[] Candidates { get; set; }
 
     /// <summary>
     /// Gemini usageMetadata
