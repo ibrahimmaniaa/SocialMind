@@ -12,13 +12,13 @@ internal class Program
     {
         HttpClient httpClient = new();
 
-        ILanguageModelClient geminiClient = new GeminiClient(httpClient, GeminiConfig.RequestUri, GeminiConfig.ApiKey);
+        ILanguageModelClient geminiClient = new GeminiClient(httpClient, new GeminiConfig());
 
         try
         {
             ResponseDto? response = await geminiClient.GetResponseAsync<ResponseDto>("How many hours per day?");
 
-            string responseText = response!.Cadndidates.First().Content.Parts.First().Text!;
+            string responseText = response!.Candidates.First().Content.Parts.First().Text!;
         }
         catch (Exception ex)
         {

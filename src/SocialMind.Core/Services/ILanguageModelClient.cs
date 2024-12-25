@@ -1,4 +1,7 @@
-﻿namespace SocialMind.Core.Services;
+﻿using SocialMind.Core.Domain.DataTransferObjects;
+using SocialMind.Core.Domain.DataTransferObjects.Gemini;
+
+namespace SocialMind.Core.Services;
 
 /// <summary>
 /// Language model client interface
@@ -10,6 +13,6 @@ public interface ILanguageModelClient
     /// </summary>
     /// <typeparam name="T">Response Type</typeparam>
     /// <param name="prompt">Message to be sent to the large language model</param>
-    /// <returns>Task</returns>
-    Task<T> GetResponseAsync<T>(string prompt);
+    /// <returns>Task of generic type <typeparamref name="T"/></returns>
+    Task<T> GetResponseAsync<T>(string prompt) where T : ResponseDtoBase;
 }

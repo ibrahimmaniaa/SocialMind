@@ -1,29 +1,19 @@
-﻿using SocialMind.Core.Domain.DataTransferObjects.Gemini;
+﻿using System.Net;
+using System.Net.Http.Headers;
+
+using SocialMind.Core.Domain.Configs;
+using SocialMind.Core.Domain.DataTransferObjects.Gemini;
 
 
 namespace SocialMind.Core.Services;
 
 public class GeminiClient : LanguageModelClientBase
 {
-    private readonly string apiUrl;
+    /// <inheritdoc />
+    public GeminiClient(HttpClient httpClient, GeminiConfig clientConfig) : base(httpClient, clientConfig) { }
 
-    public GeminiClient(HttpClient httpClient,
-                            string apiEndpoint,
-                            string apiKey)
-        : base(httpClient, apiEndpoint, apiKey)
-    {
-        apiUrl = $"{apiEndpoint}?key={apiKey}";
-    }
 
-    protected override string ConstructUrl() => apiUrl;
-
-    protected override void SetHeaders()
-    {
-        HttpClient.DefaultRequestHeaders.Clear();
-        HttpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-    }
-
-    protected override object? CreatePayload(string? message)
+    protected override object CreatePayload(string message)
     {
         return new RequestDto
                {
