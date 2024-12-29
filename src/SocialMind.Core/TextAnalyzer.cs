@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using NUnit.Framework;
+
 
 namespace TextAnalysis
 {
@@ -8,9 +8,12 @@ namespace TextAnalysis
     public enum Sentiment
     {
         Positive,
+
         Negative,
+
         Neutral
     }
+
 
     // Interface for AI service
     public interface IAIService
@@ -18,23 +21,28 @@ namespace TextAnalysis
         string AnalyzeText(string prompt);
     }
 
+
     // Interface for TextAnalyzer configurations
     public interface ITextAnalyzerConfigs
     {
         string GetSentimentPrompt(string comment);
     }
 
+
     // TextAnalyzer class
     public class TextAnalyzer
     {
         private readonly IAIService _aiService;
+
         private readonly ITextAnalyzerConfigs _configs;
+
 
         public TextAnalyzer(IAIService aiService, ITextAnalyzerConfigs configs)
         {
             _aiService = aiService;
             _configs = configs;
         }
+
 
         public Sentiment AnalyzeComment(string comment)
         {
@@ -66,3 +74,4 @@ namespace TextAnalysis
             }
         }
     }
+}
