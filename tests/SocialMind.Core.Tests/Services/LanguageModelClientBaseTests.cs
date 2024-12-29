@@ -13,7 +13,7 @@ namespace SocialMind.Core.Tests.Services;
 public class LanguageModelClientBaseTests
 {
     [Fact]
-    public void GetResponseAsync_WhenJsonDeserializingReturnsNullTest()
+    public async Task GetResponseAsync_WhenJsonDeserializingReturnsNullTest()
     {
         Mock<ILanguageModelClientConfig> mockLanguageModelClientConfig = new();
 
@@ -32,7 +32,7 @@ public class LanguageModelClientBaseTests
 
         FakeLanguageModelClient fakeLanguageModelClient = new(fakeHttpClient, mockLanguageModelClientConfig.Object);
 
-        Assert.ThrowsAsync<InvalidOperationException>(async () =>
+        await Assert.ThrowsAsync<InvalidOperationException>(async () =>
             await fakeLanguageModelClient.GetResponseAsync<ResponseDto>("dummy message"));
     }
 }
