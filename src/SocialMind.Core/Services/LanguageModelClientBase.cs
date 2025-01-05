@@ -36,25 +36,18 @@ public abstract class LanguageModelClientBase : ILanguageModelClient
 
         StringContent jsonContent = new(JsonSerializer.Serialize(payload), Encoding.UTF8, "application/json");
 
-        try
+        HttpResponseMessage response = await HttpClient.PostAsync(ClientConfig.RequestUri, jsonContent);
+
+        response.EnsureSuccessStatusCode();
+
+        T? result = await response.Content.ReadFromJsonAsync<T>();
+
+        if (result != null)
         {
-            HttpResponseMessage response = await HttpClient.PostAsync(ClientConfig.RequestUri, jsonContent);
-
-            response.EnsureSuccessStatusCode();
-
-            T? result = await response.Content.ReadFromJsonAsync<T>();
-
-            if (result != null)
-            {
-                return result;
-            }
-
-            throw new InvalidOperationException($"Http response succeeded, but the read method of {nameof(HttpResponseMessage.Content)} returned null.");
+            return result;
         }
-        catch (Exception ex)
-        {
-            throw new InvalidOperationException($"Error sending request to API: {ex.Message}");
-        }
+
+        throw new InvalidOperationException($"Http response succeeded, but the read method of {nameof(HttpResponseMessage.Content)} returned null.");
     }
 
 

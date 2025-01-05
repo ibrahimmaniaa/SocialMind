@@ -14,15 +14,9 @@ internal class Program
 
         ILanguageModelClient geminiClient = new GeminiClient(httpClient, new GeminiConfig());
 
-        try
-        {
-            ResponseDto? response = await geminiClient.GetResponseAsync<ResponseDto>("How many hours per day?");
+        ResponseDto? response = await geminiClient.GetResponseAsync<ResponseDto>("How many hours per day?");
 
-            string responseText = response!.Candidates.First().Content.Parts.First().Text!;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("Error: " + ex.Message);
-        }
+        string responseText = response!.Candidates.First().Content.Parts.First().Text!;
+
     }
 }
