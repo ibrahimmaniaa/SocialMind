@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 
 
-namespace TextAnalysis
+namespace SocialMind.Core.Services
 {
     // Enum for sentiment classification
     public enum Sentiment

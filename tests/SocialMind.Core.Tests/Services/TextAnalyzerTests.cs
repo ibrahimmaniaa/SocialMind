@@ -1,10 +1,14 @@
-﻿using System;
-using Xunit;
+﻿using SocialMind.Core;
+using SocialMind.Core.Services;
 
-namespace SocialMediaAnalysis.Tests
+namespace SocialMind.Core.Tests.Services
+
+
 {
     public class TextAnalyzerTests
     {
+
+
         // Mock implementation of IAIService
         private class MockAIService : IAIService
         {
@@ -15,11 +19,13 @@ namespace SocialMediaAnalysis.Tests
                 _response = response;
             }
 
-            public string GetResponse(string prompt)
+            // Implement the required method from IAIService
+            public string AnalyzeText(string prompt)
             {
                 return _response;
             }
         }
+
 
         // Mock implementation of ITextAnalyzerConfigs
         private class MockTextAnalyzerConfigs : ITextAnalyzerConfigs
