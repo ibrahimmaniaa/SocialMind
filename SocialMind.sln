@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialMind.Core.Tests", "te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialMind.TestCmd", "src\SocialMind.TestCmd\SocialMind.TestCmd.csproj", "{60AA361E-C8AF-4D89-B381-0290F964AE4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMind.Tests", "SociaMind.Tests\SocialMind.Tests.csproj", "{53639B19-8507-4025-A9F6-DCD3C5B4E308}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
