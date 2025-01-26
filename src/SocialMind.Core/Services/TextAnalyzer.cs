@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SocialMind.Core.Services
 {
@@ -63,20 +64,27 @@ namespace SocialMind.Core.Services
             if (string.IsNullOrWhiteSpace(aiResponse))
                 throw new UnrecognizedSentimentException("AI response was empty or null.");
 
+
             // Analyze the AI response
-            if (Regex.IsMatch(aiResponse, "\\bpositive\\b", RegexOptions.IgnoreCase))
+            // Regex patterns for sentiment classification
+            var positivePattern = new Regex(@"\b(positive|good|excellent|happy|joy|great|optimistic)\b", RegexOptions.IgnoreCase);
+            var negativePattern = new Regex(@"\b(negative|bad|poor|sad|angry|terrible|pessimistic)\b", RegexOptions.IgnoreCase);
+            var neutralPattern = new Regex(@"\b(neutral|balanced|indifferent|middle ground)\b", RegexOptions.IgnoreCase);
+
+            if (positivePattern.IsMatch(aiResponse))
             {
                 return Sentiment.Positive;
             }
-            else if (Regex.IsMatch(aiResponse, "\\bnegative\\b", RegexOptions.IgnoreCase))
+
+            if (negativePattern.IsMatch(aiResponse))
             {
                 return Sentiment.Negative;
             }
-            else if (Regex.IsMatch(aiResponse, "\\bneutral\\b", RegexOptions.IgnoreCase))
+
+            if (neutralPattern.IsMatch(aiResponse))
             {
                 return Sentiment.Neutral;
             }
-            else
             {
                 throw new UnrecognizedSentimentException("AI response did not contain recognizable sentiment keywords.");
             }
