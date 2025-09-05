@@ -1,24 +1,10 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using SocialMind.Core.Domain;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace SocialMind.Core.Services
 {
-    /// <summary>
-    /// Enumeration representing sentiment classification.
-    /// </summary>
-    public enum Sentiment
-    {
-        /// <summary>Indicates a positive sentiment.</summary>
-        Positive,
-
-        /// <summary>Indicates a negative sentiment.</summary>
-        Negative,
-
-        /// <summary>Indicates a neutral sentiment.</summary>
-        Neutral
-    }
-
     /// <summary>
     /// Exception thrown when the AI response does not contain recognizable sentiment keywords.
     /// </summary>
