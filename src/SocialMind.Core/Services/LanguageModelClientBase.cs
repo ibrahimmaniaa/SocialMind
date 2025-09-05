@@ -64,5 +64,4 @@ public abstract class LanguageModelClientBase : ILanguageModelClient
         HttpClient.DefaultRequestHeaders.Clear();
         HttpClient.DefaultRequestHeaders.Add("Accept", "application/json");
     }
-
 }

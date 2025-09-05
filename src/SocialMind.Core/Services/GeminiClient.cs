@@ -16,17 +16,17 @@ public class GeminiClient : LanguageModelClientBase
     protected override object CreatePayload(string message)
     {
         return new RequestDto
-               {
-                   Contents =
-                   [
-                       new ContentDto
-                                  {
-                                      Parts =
-                                      [
-                                          new PartDto { Text = message }
-                                      ]
-                                  }
-                   ]
-               };
+        {
+            Contents =
+            [
+                new ContentDto
+                {
+                    Parts =
+                    [
+                        new PartDto { Text = message }
+                    ]
+                }
+            ]
+        };
     }
 }

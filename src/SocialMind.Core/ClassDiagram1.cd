@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="SocialMind.Core.Domain.Configs.GeminiConfig" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEACgAAAAAAAAAAgAAgAAAAAAAA=</HashCode>
+      <FileName>Domain\Configs\GeminiConfig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SocialMind.Core.Domain.DataTransferObjects.Gemini.CandidateDto" Collapsed="true">
+    <Position X="16" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAABAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\DataTransferObjects\Gemini\CandidateDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialMind.Core.Domain.DataTransferObjects.Gemini.ContentDto" Collapsed="true">
+    <Position X="17.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEBAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\DataTransferObjects\Gemini\ContentDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialMind.Core.Domain.DataTransferObjects.Gemini.PartDto" Collapsed="true">
+    <Position X="16" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Domain\DataTransferObjects\Gemini\PartDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialMind.Core.Domain.DataTransferObjects.Gemini.RequestDto" Collapsed="true">
+    <Position X="17.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Domain\DataTransferObjects\Gemini\RequestDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialMind.Core.Domain.DataTransferObjects.Gemini.ResponseDto" Collapsed="true">
+    <Position X="13.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAgAAABAAA=</HashCode>
+      <FileName>Domain\DataTransferObjects\Gemini\ResponseDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialMind.Core.Domain.DataTransferObjects.Gemini.UsageMetadataDto" Collapsed="true">
+    <Position X="17.75" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAEIAAAAAAAAA=</HashCode>
+      <FileName>Domain\DataTransferObjects\Gemini\UsageMetadataDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialMind.Core.Domain.DataTransferObjects.ResponseDtoBase" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\DataTransferObjects\ResponseDtoBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialMind.Core.Services.GeminiClient" Collapsed="true">
+    <Position X="6.5" Y="3" Width="1.75" />
+    <InheritanceLine Type="SocialMind.Core.Services.LanguageModelClientBase" ManuallyRouted="true">
+      <Path>
+        <Point X="7.5" Y="2.312" />
+        <Point X="7.5" Y="3" />
+        <Point X="7.375" Y="3" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\GeminiClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocialMind.Core.Services.LanguageModelClientBase" Collapsed="true">
+    <Position X="6.5" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAACAAAAAAAAAAACAAAAAAAAgAAAAAAAgA=</HashCode>
+      <FileName>Services\LanguageModelClientBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SocialMind.Core.Services.TextAnalyzer" Collapsed="true">
+    <Position X="19.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAQAAAAAAAAEAAA=</HashCode>
+      <FileName>Services\TextAnalyzer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="SocialMind.Core.Domain.Configs.ILanguageModelClientConfig" Collapsed="true">
+    <Position X="19.5" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Configs\ILanguageModelClientConfig.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SocialMind.Core.Services.ILanguageModelClient" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Services\ILanguageModelClient.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
